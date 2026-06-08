@@ -158,6 +158,28 @@ header {
 
 footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
 
+  /* note 最新記事 */
+  .note-list { margin-top: 8px; }
+  .note-item {
+    display: flex; gap: 24px; align-items: center;
+    padding: 20px 0; border-bottom: 1px solid var(--line);
+  }
+  .note-item img {
+    flex: 0 0 120px; width: 120px; height: 68px;
+    object-fit: cover; border-radius: 4px; background: rgba(255,255,255,0.05);
+  }
+  .note-item .n-body { flex: 1; }
+  .note-item .n-title {
+    font-size: 0.9rem; border-bottom: 1px solid transparent; width: fit-content;
+    transition: border-color 0.25s, text-shadow 0.25s;
+  }
+  .note-item:hover .n-title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
+  .note-item .n-date { color: var(--muted); font-size: 0.75rem; margin-top: 4px; }
+  .note-loading { color: var(--muted); font-size: 0.82rem; padding: 20px 0; }
+  @media (max-width: 600px) {
+    .note-item img { flex-basis: 88px; width: 88px; height: 50px; }
+  }
+
 @media (max-width: 600px) {
   .page { padding: 0 24px; }
   header { flex-direction: column; }
@@ -221,6 +243,11 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
         <p class="excerpt">近所をぐるりと歩くのが習慣になってきました。季節の移り変わりを足元から感じる記録。</p>
       </div>
     </a>
+
+    <p class="section-label">note の最新記事</p>
+    <div class="note-list" id="note-list">
+      <p class="note-loading">読み込み中…</p>
+    </div>
 
     <footer>© Anim Note</footer>
   </div>
@@ -288,6 +315,31 @@ if (clouds) {
     clouds.style.setProperty('--my', '-500px');
   });
 }
+
+/* ----- note の最新記事を note.json から読み込む ----- */
+(async function loadNote() {
+  const list = document.getElementById('note-list');
+  if (!list) return;
+  try {
+    const res = await fetch('note.json', { cache: 'no-store' });
+    const data = await res.json();
+    if (!data.posts || data.posts.length === 0) {
+      list.innerHTML = '<p class="note-loading">記事がまだありません。</p>';
+      return;
+    }
+    list.innerHTML = data.posts.map(p => `
+      <a class="note-item" href="${p.link}" target="_blank" rel="noopener">
+        ${p.thumbnail ? `<img src="${p.thumbnail}" alt="">` : ''}
+        <div class="n-body">
+          <p class="n-title">${p.title}</p>
+          <p class="n-date">${p.date}</p>
+        </div>
+      </a>
+    `).join('');
+  } catch (e) {
+    list.innerHTML = '<p class="note-loading">記事を読み込めませんでした。</p>';
+  }
+})();
 
 </script>
 </body>
