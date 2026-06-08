@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はじめてのブログを書いてみる | Anim Note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<!-- 記事ページは1階層下なので ../ で共通ファイルを参照 -->
+<style>
+/* ===== Anim Note 共通スタイル ===== */
+:root {
+  --ink: #e8e6e2;
+  --muted: #8a8a96;
+  --line: rgba(255,255,255,0.12);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(ellipse at 70% -10%, #1b2342 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 110%, #241a33 0%, transparent 55%),
+    linear-gradient(#05060d 0%, #0a0c18 60%, #04040a 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+a { color: inherit; text-decoration: none; }
+
+/* 星空キャンバス（最背面・固定） */
+#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+/* 雲（暗幕）レイヤー。ふだん画面全体を覆い、マウス位置だけ晴れる */
+#clouds {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 40% at 22% 28%, rgba(30,34,56,0.9), transparent 72%),
+    radial-gradient(ellipse 50% 38% at 78% 38%, rgba(24,22,40,0.9), transparent 72%),
+    radial-gradient(ellipse 65% 42% at 55% 72%, rgba(22,28,50,0.9), transparent 72%),
+    radial-gradient(ellipse 45% 40% at 32% 88%, rgba(28,32,54,0.9), transparent 72%),
+    #04050b;
+  -webkit-mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
+                      transparent 0%, transparent 30%, black 78%);
+  mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
+              transparent 0%, transparent 30%, black 78%);
+}
+
+.page { position: relative; z-index: 2; padding: 0 48px; max-width: 1100px; margin: 0 auto; }
+
+/* ヘッダー（全ページ共通の小さなナビ） */
+header {
+  padding: 56px 0 0;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.intro h1 { font-size: 1rem; font-weight: 400; letter-spacing: 0.1em; }
+.intro h1 a { transition: text-shadow 0.25s; }
+.intro h1 a:hover { text-shadow: 0 0 12px rgba(200,210,255,0.6); }
+.intro .name { margin-top: 18px; font-size: 0.9rem; }
+.intro .role { color: var(--muted); font-size: 0.82rem; }
+.meta { margin-top: 40px; max-width: 460px; }
+.meta dt { color: var(--ink); font-size: 0.9rem; margin-top: 22px; }
+.meta dd { color: var(--muted); font-size: 0.82rem; }
+.meta .mail {
+  display: inline-block; margin-top: 36px; font-size: 0.82rem;
+  border-bottom: 1px solid var(--muted); padding-bottom: 1px; transition: opacity 0.2s;
+}
+.meta .mail:hover { opacity: 0.6; }
+.nav-corner { font-size: 0.78rem; color: var(--muted); transition: color 0.2s; text-align: right; }
+.nav-corner a { display: block; }
+.nav-corner a:hover { color: var(--ink); }
+
+/* セクション見出し */
+.section-label {
+  margin-top: 120px; font-size: 0.82rem; color: var(--muted);
+  border-bottom: 1px solid var(--line); padding-bottom: 8px;
+}
+
+/* 記事一覧 */
+.post {
+  display: flex; gap: 60px; padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(12px);
+  animation: rise 0.7s ease forwards;
+}
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+.post .tags { flex: 0 0 150px; font-size: 0.78rem; line-height: 1.7; }
+.post .tags span {
+  display: block; border-bottom: 1px solid var(--muted);
+  width: fit-content; margin-bottom: 2px;
+}
+.post .body { flex: 1; }
+.post .title {
+  font-size: 0.95rem; border-bottom: 1px solid transparent;
+  width: fit-content; transition: border-color 0.25s, text-shadow 0.25s;
+}
+.post:hover .title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
+.post .date { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+.post .excerpt { color: var(--muted); font-size: 0.82rem; margin-top: 10px; max-width: 520px; }
+
+/* 記事本文ページ */
+.article { margin-top: 80px; max-width: 680px; }
+.article .a-tags { font-size: 0.78rem; color: var(--muted); }
+.article h2 { font-size: 1.5rem; font-weight: 400; margin: 14px 0 6px; line-height: 1.5; }
+.article .a-date { color: var(--muted); font-size: 0.8rem; }
+.article .a-body { margin-top: 40px; }
+.article .a-body p { margin-bottom: 28px; font-size: 0.92rem; }
+.back-link {
+  display: inline-block; margin-top: 60px; font-size: 0.82rem; color: var(--muted);
+  border-bottom: 1px solid var(--muted); transition: color 0.2s;
+}
+.back-link:hover { color: var(--ink); }
+
+/* 問い合わせフォーム */
+.form-wrap { margin-top: 80px; max-width: 560px; }
+.form-wrap .lead { color: var(--muted); font-size: 0.85rem; margin-bottom: 40px; }
+.field { margin-bottom: 28px; }
+.field label { display: block; font-size: 0.8rem; margin-bottom: 8px; }
+.field input, .field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 12px 14px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: rgba(200,210,255,0.5);
+  box-shadow: 0 0 12px rgba(120,140,220,0.2);
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.submit-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+.submit-btn:hover { background: rgba(255,255,255,0.12); box-shadow: 0 0 16px rgba(120,140,220,0.25); }
+
+footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
+
+@media (max-width: 600px) {
+  .page { padding: 0 24px; }
+  header { flex-direction: column; }
+  .nav-corner { margin-top: 24px; text-align: left; }
+  .post { flex-direction: column; gap: 12px; }
+  .post .tags { flex-basis: auto; }
+  .section-label { margin-top: 80px; }
+}
+
+</style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div id="clouds"></div>
+
+  <div class="page">
+    <header>
+      <div class="intro">
+        <h1><a href="index.html">Anim Note</a></h1>
+      </div>
+      <div class="nav-corner">
+        <a href="contact.html">CONTACT</a>
+      </div>
+    </header>
+
+    <article class="article">
+      <p class="a-tags">日記</p>
+      <h2>はじめてのブログを書いてみる</h2>
+      <p class="a-date">2026</p>
+
+      <!-- ここに本文。段落ごとに <p>...</p> で囲む -->
+      <div class="a-body">
+        <p>ずっとやってみたかったブログを、ついに始めました。きっかけは、日々の小さな気づきが、書き留めないとそのまま消えていってしまうのがもったいないと感じたことです。</p>
+        <p>最初はノートに手書きしていたのですが、せっかくなら同じことを考えている誰かに届くかもしれない、と思って公開の場に書いてみることにしました。</p>
+        <p>うまく書こうとは思っていません。その日に感じたことを、そのままの温度で残していけたらと思っています。これからどうぞよろしくお願いします。</p>
+      </div>
+
+      <a class="back-link" href="index.html">← Index にもどる</a>
+    </article>
+
+    <footer>© Anim Note</footer>
+  </div>
+
+  <script>
+/* ===== Anim Note 共通スクリプト：星空 + マウスで晴れる雲 ===== */
+
+/* ----- 星空 ----- */
+const canvas = document.getElementById('stars');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let stars = [], w, h;
+
+  function makeStars() {
+    const count = Math.floor((w * h) / 1400); // 密度。小さくすると星が増える
+    stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.2 + 0.2,
+        base: Math.random() * 0.5 + 0.3,
+        tw: Math.random() * 0.02 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        hue: Math.random() < 0.15 ? (Math.random() < 0.5 ? '200,220,255' : '255,240,210') : '255,255,255'
+      });
+    }
+  }
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    makeStars();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    t += 1;
+    for (const s of stars) {
+      const a = s.base + Math.sin(t * s.tw + s.phase) * 0.3;
+      const alpha = Math.max(0, Math.min(1, a));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + s.hue + ',' + alpha + ')';
+      if (s.r > 1) { ctx.shadowColor = 'rgba(' + s.hue + ',0.8)'; ctx.shadowBlur = 4; }
+      else { ctx.shadowBlur = 0; }
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ----- マウス位置の雲が晴れる ----- */
+const clouds = document.getElementById('clouds');
+if (clouds) {
+  window.addEventListener('mousemove', (e) => {
+    clouds.style.setProperty('--mx', e.clientX + 'px');
+    clouds.style.setProperty('--my', e.clientY + 'px');
+  });
+  document.addEventListener('mouseleave', () => {
+    clouds.style.setProperty('--mx', '-500px');
+    clouds.style.setProperty('--my', '-500px');
+  });
+}
+
+</script>
+</body>
+</html>
