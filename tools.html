@@ -10,16 +10,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NekoZ Note | Index</title>
+<title>Tools | NekoZ Note</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #e8e6e2;
-  --muted: #8a8a96;
-  --line: rgba(255,255,255,0.12);
-}
+:root { --ink: #e8e6e2; --muted: #8a8a96; --line: rgba(255,255,255,0.12); }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -30,12 +26,8 @@ body {
   background-attachment: fixed;
   color: var(--ink);
   font-family: "Noto Sans JP", sans-serif;
-  font-weight: 300;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  position: relative;
+  font-weight: 300; line-height: 1.9; letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased; min-height: 100vh; position: relative;
 }
 a { color: inherit; text-decoration: none; }
 #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
@@ -45,85 +37,67 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(ellipse 55% 40% at 22% 28%, rgba(30,34,56,0.9), transparent 72%),
     radial-gradient(ellipse 50% 38% at 78% 38%, rgba(24,22,40,0.9), transparent 72%),
     radial-gradient(ellipse 65% 42% at 55% 72%, rgba(22,28,50,0.9), transparent 72%),
-    radial-gradient(ellipse 45% 40% at 32% 88%, rgba(28,32,54,0.9), transparent 72%),
     #04050b;
-  -webkit-mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
-                      transparent 0%, transparent 30%, black 78%);
-  mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
-              transparent 0%, transparent 30%, black 78%);
+  -webkit-mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px), transparent 0%, transparent 30%, black 78%);
+  mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px), transparent 0%, transparent 30%, black 78%);
 }
 .page { position: relative; z-index: 2; padding: 0 48px; max-width: 1100px; margin: 0 auto; }
 header { padding: 56px 0 0; display: flex; justify-content: space-between; align-items: flex-start; }
 .intro h1 { font-size: 1rem; font-weight: 400; letter-spacing: 0.1em; }
+.intro h1 a { transition: text-shadow 0.25s; }
+.intro h1 a:hover { text-shadow: 0 0 12px rgba(200,210,255,0.6); }
 .intro .lead-1 { margin-top: 18px; font-size: 0.9rem; }
-.intro .lead-2 { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
-.sns-list { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
-.sns-item {
-  display: flex; align-items: center; gap: 9px;
-  padding: 10px 16px; border: 1px solid var(--line); border-radius: 4px;
-  font-size: 0.8rem; color: var(--ink);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-}
-.sns-item:hover {
-  border-color: rgba(200,210,255,0.5);
-  box-shadow: 0 0 16px rgba(120,140,220,0.2);
-  transform: translateY(-2px);
-}
-.sns-item svg { opacity: 0.9; flex-shrink: 0; }
 .nav-corner { font-size: 0.78rem; color: var(--muted); transition: color 0.2s; text-align: right; }
-.nav-corner a { display: block; margin-bottom: 6px; }
 .nav-corner a:hover { color: var(--ink); }
-.section-label {
-  margin-top: 120px; font-size: 0.82rem; color: var(--muted);
-  border-bottom: 1px solid var(--line); padding-bottom: 8px;
+.section-label { margin-top: 80px; font-size: 0.82rem; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.tool { margin-top: 40px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.02); }
+.tool-head { padding: 20px 24px; border-bottom: 1px solid var(--line); }
+.tool-head h3 { font-size: 0.95rem; font-weight: 400; }
+.tool-head p { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+.tabs { display: flex; gap: 4px; padding: 12px 24px 0; }
+.tab {
+  display: flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 0.78rem;
+  color: var(--muted); border: 1px solid transparent; border-bottom: none;
+  border-radius: 6px 6px 0 0; cursor: pointer; background: none; font-family: inherit;
+  transition: color 0.2s, background 0.2s;
 }
-/* リンクになった見出し */
-a.section-label { display: block; transition: color 0.2s, border-color 0.2s; }
-a.section-label:hover { color: var(--ink); border-color: rgba(200,210,255,0.5); }
-a.section-label .arrow { float: right; transition: transform 0.2s; }
-a.section-label:hover .arrow { transform: translateX(4px); }
-.post {
-  display: flex; gap: 60px; padding: 32px 0;
-  border-bottom: 1px solid var(--line);
-  opacity: 0; transform: translateY(12px);
-  animation: rise 0.7s ease forwards;
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); background: rgba(255,255,255,0.05); border-color: var(--line); }
+.tab svg { width: 15px; height: 15px; }
+.panel { border-top: 1px solid var(--line); }
+.panel-preview { padding: 28px 24px; }
+.panel-code { display: none; }
+.code-wrap { position: relative; }
+.panel-code pre {
+  margin: 0; padding: 24px; overflow-x: auto; background: rgba(0,0,0,0.35);
+  font-size: 0.8rem; line-height: 1.7;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; color: #d4d4e0;
 }
-@keyframes rise { to { opacity: 1; transform: translateY(0); } }
-.post .tags { flex: 0 0 150px; font-size: 0.78rem; line-height: 1.7; }
-.post .tags span { display: block; border-bottom: 1px solid var(--muted); width: fit-content; margin-bottom: 2px; }
-.post .body { flex: 1; }
-.post .title {
-  font-size: 0.95rem; border-bottom: 1px solid transparent;
-  width: fit-content; transition: border-color 0.25s, text-shadow 0.25s;
+.copy-btn {
+  position: absolute; top: 12px; right: 12px; padding: 5px 12px; font-size: 0.72rem;
+  color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--line);
+  border-radius: 4px; cursor: pointer; font-family: inherit; transition: color 0.2s;
 }
-.post:hover .title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
-.post .date { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
-.post .excerpt { color: var(--muted); font-size: 0.82rem; margin-top: 10px; max-width: 520px; }
+.copy-btn:hover { color: var(--ink); }
+.demo label { font-size: 0.82rem; color: var(--muted); display: block; margin-bottom: 8px; }
+.demo input[type="text"], .demo textarea {
+  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+  border-radius: 4px; color: var(--ink); font-family: inherit; font-size: 0.9rem;
+  padding: 10px 12px; font-weight: 300;
+}
+.demo .result { margin-top: 14px; font-size: 0.9rem; }
+.demo .swatch { width: 100%; height: 60px; border-radius: 4px; margin-top: 12px; border: 1px solid var(--line); }
 footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
-.note-list { margin-top: 8px; }
-.note-item { display: flex; gap: 24px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
-.note-item img { flex: 0 0 120px; width: 120px; height: 68px; object-fit: cover; border-radius: 4px; background: rgba(255,255,255,0.05); }
-.note-item .n-body { flex: 1; }
-.note-item .n-title { font-size: 0.9rem; border-bottom: 1px solid transparent; width: fit-content; transition: border-color 0.25s, text-shadow 0.25s; }
-.note-item:hover .n-title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
-.note-item .n-date { color: var(--muted); font-size: 0.75rem; margin-top: 4px; }
-.note-loading { color: var(--muted); font-size: 0.82rem; padding: 20px 0; }
 @media (max-width: 600px) {
   .page { padding: 0 24px; }
   header { flex-direction: column; }
   .nav-corner { margin-top: 24px; text-align: left; }
-  .nav-corner a { display: inline-block; margin-right: 16px; }
-  .post { flex-direction: column; gap: 12px; }
-  .post .tags { flex-basis: auto; }
-  .section-label { margin-top: 80px; }
-  .note-item img { flex-basis: 88px; width: 88px; height: 50px; }
 }
 </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDKJJZSH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDKJJZSH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <canvas id="stars"></canvas>
   <div id="clouds"></div>
@@ -131,165 +105,114 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="page">
     <header>
       <div class="intro">
-        <h1>NekoZ Note</h1>
-        <p class="lead-1">自分の学んだことを管理するため。</p>
-        <p class="lead-2">GAS / Python / 時事ニュース / 情報整理</p>
-        <div class="sns-list">
-          <a class="sns-item" href="https://x.com/NekoZ_UC" target="_blank" rel="noopener" aria-label="X">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <span>X</span>
-          </a>
-          <a class="sns-item" href="https://note.com/nekoz_17" target="_blank" rel="noopener" aria-label="note">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4 4h13.5c1.5 0 2.5 1 2.5 2.5V20H6.5C5 20 4 19 4 17.5V4zm2.5 2v11.5h11V6.5c0-.3-.2-.5-.5-.5H6.5z"/><path d="M8 9h8v1.5H8zm0 3h8v1.5H8zm0 3h5v1.5H8z"/></svg>
-            <span>note</span>
-          </a>
-          <a class="sns-item" href="mailto:animuzhongxi@gmail.com" aria-label="Gmail">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 5h18c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1H3c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1zm9 7L4 6.8V18h16V6.8L12 12zM4.6 6L12 10.8 19.4 6H4.6z"/></svg>
-            <span>Mail</span>
-          </a>
-        </div>
+        <h1><a href="index.html">NekoZ Note</a></h1>
+        <p class="lead-1">作ったツールたち</p>
       </div>
-      <div class="nav-corner">
-        <a href="tools.html">TOOLS</a>
-        <a href="contact.html">CONTACT</a>
-      </div>
+      <div class="nav-corner"><a href="index.html">INDEX</a></div>
     </header>
 
-    <p class="section-label">Index</p>
+    <p class="section-label">Tools</p>
 
-    <a href="001.html" class="post" style="animation-delay:.05s">
-      <div class="tags"><span>日記</span></div>
-      <div class="body">
-        <p class="title">はじめてのブログを書いてみる</p>
-        <p class="date">2026</p>
-        <p class="excerpt">ずっとやってみたかったブログを、ついに始めました。なぜ書こうと思ったのかを綴ってみます。</p>
+    <div class="tool">
+      <div class="tool-head">
+        <h3>カラーコード変換</h3>
+        <p>色を選ぶと、そのHEXコードを表示します。</p>
       </div>
-    </a>
-
-    <a href="002.html" class="post" style="animation-delay:.15s">
-      <div class="tags"><span>読書</span></div>
-      <div class="body">
-        <p class="title">最近読んだ本のこと</p>
-        <p class="date">2026</p>
-        <p class="excerpt">このあいだ手にとった一冊が思いのほかおもしろくて、感想を残しておきたくなりました。</p>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab(this,'preview')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
+          プレビュー
+        </button>
+        <button class="tab" onclick="switchTab(this,'code')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          コード
+        </button>
       </div>
-    </a>
-
-    <a href="003.html" class="post" style="animation-delay:.25s">
-      <div class="tags"><span>暮らし</span></div>
-      <div class="body">
-        <p class="title">朝の散歩で見つけたもの</p>
-        <p class="date">2026</p>
-        <p class="excerpt">近所をぐるりと歩くのが習慣になってきました。季節の移り変わりを足元から感じる記録。</p>
+      <div class="panel">
+        <div class="panel-preview demo">
+          <label>色を選んでください</label>
+          <input type="color" id="cp" value="#1b2342" style="width:60px;height:40px;background:none;border:1px solid var(--line);border-radius:4px;cursor:pointer;">
+          <div class="swatch" id="cpsw" style="background:#1b2342;"></div>
+          <div class="result">HEX: <span id="cphex">#1b2342</span></div>
+        </div>
+        <div class="panel-code">
+          <div class="code-wrap">
+            <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+            <pre>&lt;input type="color" id="cp"&gt;
+&lt;span id="hex"&gt;&lt;/span&gt;
+&lt;script&gt;
+  cp.addEventListener('input', e =&gt; {
+    hex.textContent = e.target.value;
+  });
+&lt;/script&gt;</pre>
+          </div>
+        </div>
       </div>
-    </a>
-
-    <a class="section-label" href="tools.html">作成アプリ一覧<span class="arrow">→</span></a>
-    <div class="note-list" id="tools-list">
-      <p class="note-loading">読み込み中…</p>
     </div>
 
-    <p class="section-label">note の最新記事</p>
-    <div class="note-list" id="note-list">
-      <p class="note-loading">読み込み中…</p>
+    <div class="tool">
+      <div class="tool-head">
+        <h3>文字数カウンター</h3>
+        <p>入力した文章の文字数をリアルタイムで数えます。</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab(this,'preview')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
+          プレビュー
+        </button>
+        <button class="tab" onclick="switchTab(this,'code')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          コード
+        </button>
+      </div>
+      <div class="panel">
+        <div class="panel-preview demo">
+          <label>文章を入力してください</label>
+          <textarea id="cc" rows="3" placeholder="ここに入力…"></textarea>
+          <div class="result">文字数: <span id="ccnum">0</span></div>
+        </div>
+        <div class="panel-code">
+          <div class="code-wrap">
+            <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+            <pre>&lt;textarea id="cc"&gt;&lt;/textarea&gt;
+&lt;span id="num"&gt;0&lt;/span&gt;
+&lt;script&gt;
+  cc.addEventListener('input', e =&gt; {
+    num.textContent = e.target.value.length;
+  });
+&lt;/script&gt;</pre>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer>© NekoZ Note</footer>
   </div>
 
+  <script src="effect.js"></script>
   <script>
-const canvas = document.getElementById('stars');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  let stars = [], w, h;
-  function makeStars() {
-    const count = Math.floor((w * h) / 1400);
-    stars = [];
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * w, y: Math.random() * h,
-        r: Math.random() * 1.2 + 0.2, base: Math.random() * 0.5 + 0.3,
-        tw: Math.random() * 0.02 + 0.005, phase: Math.random() * Math.PI * 2,
-        hue: Math.random() < 0.15 ? (Math.random() < 0.5 ? '200,220,255' : '255,240,210') : '255,255,255'
-      });
-    }
-  }
-  function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; makeStars(); }
-  window.addEventListener('resize', resize);
-  resize();
-  let t = 0;
-  function draw() {
-    ctx.clearRect(0, 0, w, h); t += 1;
-    for (const s of stars) {
-      const a = s.base + Math.sin(t * s.tw + s.phase) * 0.3;
-      const alpha = Math.max(0, Math.min(1, a));
-      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + s.hue + ',' + alpha + ')';
-      if (s.r > 1) { ctx.shadowColor = 'rgba(' + s.hue + ',0.8)'; ctx.shadowBlur = 4; } else { ctx.shadowBlur = 0; }
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
+function switchTab(btn, type) {
+  var tool = btn.closest('.tool');
+  var tabs = tool.querySelectorAll('.tab');
+  for (var i=0; i<tabs.length; i++) tabs[i].classList.remove('active');
+  btn.classList.add('active');
+  tool.querySelector('.panel-preview').style.display = (type === 'preview') ? 'block' : 'none';
+  tool.querySelector('.panel-code').style.display = (type === 'code') ? 'block' : 'none';
 }
-const clouds = document.getElementById('clouds');
-if (clouds) {
-  window.addEventListener('mousemove', (e) => {
-    clouds.style.setProperty('--mx', e.clientX + 'px');
-    clouds.style.setProperty('--my', e.clientY + 'px');
-  });
-  document.addEventListener('mouseleave', () => {
-    clouds.style.setProperty('--mx', '-500px');
-    clouds.style.setProperty('--my', '-500px');
+function copyCode(btn) {
+  var code = btn.parentNode.querySelector('pre').textContent;
+  navigator.clipboard.writeText(code).then(function(){
+    btn.textContent = 'コピーしました';
+    setTimeout(function(){ btn.textContent = 'コピー'; }, 1500);
   });
 }
-/* note の最新記事 */
-(async function loadNote() {
-  const list = document.getElementById('note-list');
-  if (!list) return;
-  try {
-    const res = await fetch('note.json', { cache: 'no-store' });
-    const data = await res.json();
-    if (!data.posts || data.posts.length === 0) {
-      list.innerHTML = '<p class="note-loading">記事がまだありません。</p>';
-      return;
-    }
-    list.innerHTML = data.posts.map(p => `
-      <a class="note-item" href="${p.link}" target="_blank" rel="noopener">
-        ${p.thumbnail ? `<img src="${p.thumbnail}" alt="">` : ''}
-        <div class="n-body">
-          <p class="n-title">${p.title}</p>
-          <p class="n-date">${p.date}</p>
-        </div>
-      </a>
-    `).join('');
-  } catch (e) {
-    list.innerHTML = '<p class="note-loading">記事を読み込めませんでした。</p>';
-  }
-})();
-/* 作成ツールの最新5件 */
-(async function loadTools() {
-  const list = document.getElementById('tools-list');
-  if (!list) return;
-  try {
-    const res = await fetch('tools.json', { cache: 'no-store' });
-    const data = await res.json();
-    if (!data.posts || data.posts.length === 0) {
-      list.innerHTML = '<p class="note-loading">まだツールがありません。</p>';
-      return;
-    }
-    list.innerHTML = data.posts.slice(0, 5).map(p => `
-      <a class="note-item" href="${p.link}">
-        <div class="n-body">
-          <p class="n-title">${p.title}</p>
-          <p class="n-date">${p.date}${p.desc ? ' ・ ' + p.desc : ''}</p>
-        </div>
-      </a>
-    `).join('');
-  } catch (e) {
-    list.innerHTML = '<p class="note-loading">ツール一覧を読み込めませんでした。</p>';
-  }
-})();
+document.getElementById('cp').addEventListener('input', function(e){
+  document.getElementById('cpsw').style.background = e.target.value;
+  document.getElementById('cphex').textContent = e.target.value;
+});
+document.getElementById('cc').addEventListener('input', function(e){
+  document.getElementById('ccnum').textContent = e.target.value.length;
+});
 </script>
 </body>
 </html>
