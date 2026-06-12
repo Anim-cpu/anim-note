@@ -59,23 +59,11 @@ header { padding: 56px 0 0; display: flex; justify-content: space-between; align
 .nav-corner { font-size: 0.78rem; color: var(--muted); transition: color 0.2s; text-align: right; }
 .nav-corner a { display: block; margin-bottom: 6px; }
 .nav-corner a:hover { color: var(--ink); }
-.section-label { margin-top: 120px; font-size: 0.82rem; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.section-label { margin-top: 100px; font-size: 0.82rem; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
 a.section-label { display: block; transition: color 0.2s, border-color 0.2s; }
 a.section-label:hover { color: var(--ink); border-color: rgba(200,210,255,0.5); }
 a.section-label .arrow { float: right; transition: transform 0.2s; }
 a.section-label:hover .arrow { transform: translateX(4px); }
-.post {
-  display: flex; gap: 60px; padding: 32px 0; border-bottom: 1px solid var(--line);
-  opacity: 0; transform: translateY(12px); animation: rise 0.7s ease forwards;
-}
-@keyframes rise { to { opacity: 1; transform: translateY(0); } }
-.post .tags { flex: 0 0 150px; font-size: 0.78rem; line-height: 1.7; }
-.post .tags span { display: block; border-bottom: 1px solid var(--muted); width: fit-content; margin-bottom: 2px; }
-.post .body { flex: 1; }
-.post .title { font-size: 0.95rem; border-bottom: 1px solid transparent; width: fit-content; transition: border-color 0.25s, text-shadow 0.25s; }
-.post:hover .title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
-.post .date { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
-.post .excerpt { color: var(--muted); font-size: 0.82rem; margin-top: 10px; max-width: 520px; }
 footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
 .note-list { margin-top: 8px; }
 .note-item { display: flex; gap: 24px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -90,9 +78,7 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
   header { flex-direction: column; }
   .nav-corner { margin-top: 24px; text-align: left; }
   .nav-corner a { display: inline-block; margin-right: 16px; }
-  .post { flex-direction: column; gap: 12px; }
-  .post .tags { flex-basis: auto; }
-  .section-label { margin-top: 80px; }
+  .section-label { margin-top: 60px; }
   .note-item img { flex-basis: 88px; width: 88px; height: 50px; }
 }
 </style>
@@ -131,35 +117,6 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
         <a href="contact.html">CONTACT</a>
       </div>
     </header>
-
-    <p class="section-label">Index</p>
-
-    <a href="001.html" class="post" style="animation-delay:.05s">
-      <div class="tags"><span>日記</span></div>
-      <div class="body">
-        <p class="title">はじめてのブログを書いてみる</p>
-        <p class="date">2026</p>
-        <p class="excerpt">ずっとやってみたかったブログを、ついに始めました。なぜ書こうと思ったのかを綴ってみます。</p>
-      </div>
-    </a>
-
-    <a href="002.html" class="post" style="animation-delay:.15s">
-      <div class="tags"><span>読書</span></div>
-      <div class="body">
-        <p class="title">最近読んだ本のこと</p>
-        <p class="date">2026</p>
-        <p class="excerpt">このあいだ手にとった一冊が思いのほかおもしろくて、感想を残しておきたくなりました。</p>
-      </div>
-    </a>
-
-    <a href="003.html" class="post" style="animation-delay:.25s">
-      <div class="tags"><span>暮らし</span></div>
-      <div class="body">
-        <p class="title">朝の散歩で見つけたもの</p>
-        <p class="date">2026</p>
-        <p class="excerpt">近所をぐるりと歩くのが習慣になってきました。季節の移り変わりを足元から感じる記録。</p>
-      </div>
-    </a>
 
     <a class="section-label" href="tools.html">作成アプリ一覧<span class="arrow">→</span></a>
     <div class="note-list" id="tools-list">
