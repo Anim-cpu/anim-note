@@ -183,10 +183,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="tools.html" class="post" style="animation-delay:.05s">
       <div class="tags"><span>Tools</span></div>
       <div class="body">
-        <p class="title">作ったツールを見る →</p>
+        <p class="title">過去作成一覧</p>
         <p class="excerpt">便利ツールをプレビュー＆コード付きで公開しています。</p>
       </div>
     </a>
+    <div class="note-list" id="tools-list">
+      <p class="note-loading">読み込み中…</p>
+    </div>
 
     <p class="section-label">note の最新記事</p>
     <div class="note-list" id="note-list">
@@ -242,6 +245,7 @@ if (clouds) {
     clouds.style.setProperty('--my', '-500px');
   });
 }
+/* note の最新記事 */
 (async function loadNote() {
   const list = document.getElementById('note-list');
   if (!list) return;
@@ -263,6 +267,29 @@ if (clouds) {
     `).join('');
   } catch (e) {
     list.innerHTML = '<p class="note-loading">記事を読み込めませんでした。</p>';
+  }
+})();
+/* 作成ツールの最新5件 */
+(async function loadTools() {
+  const list = document.getElementById('tools-list');
+  if (!list) return;
+  try {
+    const res = await fetch('tools.json', { cache: 'no-store' });
+    const data = await res.json();
+    if (!data.posts || data.posts.length === 0) {
+      list.innerHTML = '<p class="note-loading">まだツールがありません。</p>';
+      return;
+    }
+    list.innerHTML = data.posts.slice(0, 5).map(p => `
+      <a class="note-item" href="${p.link}">
+        <div class="n-body">
+          <p class="n-title">${p.title}</p>
+          <p class="n-date">${p.date}${p.desc ? ' ・ ' + p.desc : ''}</p>
+        </div>
+      </a>
+    `).join('');
+  } catch (e) {
+    list.innerHTML = '<p class="note-loading">ツール一覧を読み込めませんでした。</p>';
   }
 })();
 </script>
