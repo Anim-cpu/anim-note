@@ -15,11 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #e8e6e2;
-  --muted: #8a8a96;
-  --line: rgba(255,255,255,0.12);
-}
+:root { --ink: #e8e6e2; --muted: #8a8a96; --line: rgba(255,255,255,0.12); }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -30,12 +26,8 @@ body {
   background-attachment: fixed;
   color: var(--ink);
   font-family: "Noto Sans JP", sans-serif;
-  font-weight: 300;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  position: relative;
+  font-weight: 300; line-height: 1.9; letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased; min-height: 100vh; position: relative;
 }
 a { color: inherit; text-decoration: none; }
 #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
@@ -47,10 +39,8 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(ellipse 65% 42% at 55% 72%, rgba(22,28,50,0.9), transparent 72%),
     radial-gradient(ellipse 45% 40% at 32% 88%, rgba(28,32,54,0.9), transparent 72%),
     #04050b;
-  -webkit-mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
-                      transparent 0%, transparent 30%, black 78%);
-  mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px),
-              transparent 0%, transparent 30%, black 78%);
+  -webkit-mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px), transparent 0%, transparent 30%, black 78%);
+  mask-image: radial-gradient(circle var(--r,200px) at var(--mx,-500px) var(--my,-500px), transparent 0%, transparent 30%, black 78%);
 }
 .page { position: relative; z-index: 2; padding: 0 48px; max-width: 1100px; margin: 0 auto; }
 header { padding: 56px 0 0; display: flex; justify-content: space-between; align-items: flex-start; }
@@ -64,33 +54,25 @@ header { padding: 56px 0 0; display: flex; justify-content: space-between; align
   font-size: 0.8rem; color: var(--ink);
   transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
-.sns-item:hover {
-  border-color: rgba(200,210,255,0.5);
-  box-shadow: 0 0 16px rgba(120,140,220,0.2);
-  transform: translateY(-2px);
-}
+.sns-item:hover { border-color: rgba(200,210,255,0.5); box-shadow: 0 0 16px rgba(120,140,220,0.2); transform: translateY(-2px); }
 .sns-item svg { opacity: 0.9; flex-shrink: 0; }
 .nav-corner { font-size: 0.78rem; color: var(--muted); transition: color 0.2s; text-align: right; }
 .nav-corner a { display: block; margin-bottom: 6px; }
 .nav-corner a:hover { color: var(--ink); }
-.section-label {
-  margin-top: 120px; font-size: 0.82rem; color: var(--muted);
-  border-bottom: 1px solid var(--line); padding-bottom: 8px;
-}
+.section-label { margin-top: 120px; font-size: 0.82rem; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+a.section-label { display: block; transition: color 0.2s, border-color 0.2s; }
+a.section-label:hover { color: var(--ink); border-color: rgba(200,210,255,0.5); }
+a.section-label .arrow { float: right; transition: transform 0.2s; }
+a.section-label:hover .arrow { transform: translateX(4px); }
 .post {
-  display: flex; gap: 60px; padding: 32px 0;
-  border-bottom: 1px solid var(--line);
-  opacity: 0; transform: translateY(12px);
-  animation: rise 0.7s ease forwards;
+  display: flex; gap: 60px; padding: 32px 0; border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(12px); animation: rise 0.7s ease forwards;
 }
 @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 .post .tags { flex: 0 0 150px; font-size: 0.78rem; line-height: 1.7; }
 .post .tags span { display: block; border-bottom: 1px solid var(--muted); width: fit-content; margin-bottom: 2px; }
 .post .body { flex: 1; }
-.post .title {
-  font-size: 0.95rem; border-bottom: 1px solid transparent;
-  width: fit-content; transition: border-color 0.25s, text-shadow 0.25s;
-}
+.post .title { font-size: 0.95rem; border-bottom: 1px solid transparent; width: fit-content; transition: border-color 0.25s, text-shadow 0.25s; }
 .post:hover .title { border-color: var(--ink); text-shadow: 0 0 12px rgba(200,210,255,0.6); }
 .post .date { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
 .post .excerpt { color: var(--muted); font-size: 0.82rem; margin-top: 10px; max-width: 520px; }
@@ -117,8 +99,7 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDKJJZSH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDKJJZSH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <canvas id="stars"></canvas>
   <div id="clouds"></div>
@@ -146,6 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="nav-corner">
         <a href="tools.html">TOOLS</a>
+        <a href="code.html">CODE</a>
         <a href="contact.html">CONTACT</a>
       </div>
     </header>
@@ -179,15 +161,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </a>
 
-    <p class="section-label">作成アプリ一覧</p>
-    <a href="tools.html" class="post" style="animation-delay:.05s">
-      <div class="tags"><span>Tools</span></div>
-      <div class="body">
-        <p class="title">過去作成一覧</p>
-        <p class="excerpt">便利ツールをプレビュー＆コード付きで公開しています。</p>
-      </div>
-    </a>
+    <a class="section-label" href="tools.html">作成アプリ一覧<span class="arrow">→</span></a>
     <div class="note-list" id="tools-list">
+      <p class="note-loading">読み込み中…</p>
+    </div>
+
+    <a class="section-label" href="code.html">コード記録一覧<span class="arrow">→</span></a>
+    <div class="note-list" id="code-list">
       <p class="note-loading">読み込み中…</p>
     </div>
 
@@ -205,29 +185,23 @@ if (canvas) {
   const ctx = canvas.getContext('2d');
   let stars = [], w, h;
   function makeStars() {
-    const count = Math.floor((w * h) / 1400);
-    stars = [];
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * w, y: Math.random() * h,
-        r: Math.random() * 1.2 + 0.2, base: Math.random() * 0.5 + 0.3,
-        tw: Math.random() * 0.02 + 0.005, phase: Math.random() * Math.PI * 2,
-        hue: Math.random() < 0.15 ? (Math.random() < 0.5 ? '200,220,255' : '255,240,210') : '255,255,255'
-      });
-    }
+    const count = Math.floor((w * h) / 1400); stars = [];
+    for (let i = 0; i < count; i++) stars.push({
+      x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.2+0.2,
+      base: Math.random()*0.5+0.3, tw: Math.random()*0.02+0.005, phase: Math.random()*Math.PI*2,
+      hue: Math.random()<0.15 ? (Math.random()<0.5?'200,220,255':'255,240,210') : '255,255,255'
+    });
   }
-  function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; makeStars(); }
-  window.addEventListener('resize', resize);
-  resize();
-  let t = 0;
-  function draw() {
-    ctx.clearRect(0, 0, w, h); t += 1;
-    for (const s of stars) {
-      const a = s.base + Math.sin(t * s.tw + s.phase) * 0.3;
-      const alpha = Math.max(0, Math.min(1, a));
-      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + s.hue + ',' + alpha + ')';
-      if (s.r > 1) { ctx.shadowColor = 'rgba(' + s.hue + ',0.8)'; ctx.shadowBlur = 4; } else { ctx.shadowBlur = 0; }
+  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; makeStars(); }
+  window.addEventListener('resize', resize); resize();
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,w,h); t++;
+    for (const s of stars){
+      const alpha=Math.max(0,Math.min(1, s.base+Math.sin(t*s.tw+s.phase)*0.3));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba('+s.hue+','+alpha+')';
+      if(s.r>1){ctx.shadowColor='rgba('+s.hue+',0.8)';ctx.shadowBlur=4;}else{ctx.shadowBlur=0;}
       ctx.fill();
     }
     requestAnimationFrame(draw);
@@ -236,62 +210,38 @@ if (canvas) {
 }
 const clouds = document.getElementById('clouds');
 if (clouds) {
-  window.addEventListener('mousemove', (e) => {
-    clouds.style.setProperty('--mx', e.clientX + 'px');
-    clouds.style.setProperty('--my', e.clientY + 'px');
+  window.addEventListener('mousemove', e => {
+    clouds.style.setProperty('--mx', e.clientX+'px');
+    clouds.style.setProperty('--my', e.clientY+'px');
   });
   document.addEventListener('mouseleave', () => {
-    clouds.style.setProperty('--mx', '-500px');
-    clouds.style.setProperty('--my', '-500px');
+    clouds.style.setProperty('--mx','-500px'); clouds.style.setProperty('--my','-500px');
   });
 }
-/* note の最新記事 */
-(async function loadNote() {
-  const list = document.getElementById('note-list');
-  if (!list) return;
-  try {
-    const res = await fetch('note.json', { cache: 'no-store' });
-    const data = await res.json();
-    if (!data.posts || data.posts.length === 0) {
-      list.innerHTML = '<p class="note-loading">記事がまだありません。</p>';
-      return;
+function renderList(id, jsonFile, limit) {
+  (async function(){
+    var list = document.getElementById(id);
+    if (!list) return;
+    try {
+      var res = await fetch(jsonFile, { cache: 'no-store' });
+      var data = await res.json();
+      var posts = data.posts || [];
+      if (limit) posts = posts.slice(0, limit);
+      if (posts.length === 0) { list.innerHTML = '<p class="note-loading">まだありません。</p>'; return; }
+      list.innerHTML = posts.map(function(p){
+        var img = p.thumbnail ? '<img src="'+p.thumbnail+'" alt="">' : '';
+        var sub = p.date + (p.desc ? ' ・ ' + p.desc : '');
+        return '<a class="note-item" href="'+p.link+'" target="_blank" rel="noopener">'+img+
+          '<div class="n-body"><p class="n-title">'+p.title+'</p><p class="n-date">'+sub+'</p></div></a>';
+      }).join('');
+    } catch(e) {
+      list.innerHTML = '<p class="note-loading">読み込めませんでした。</p>';
     }
-    list.innerHTML = data.posts.map(p => `
-      <a class="note-item" href="${p.link}" target="_blank" rel="noopener">
-        ${p.thumbnail ? `<img src="${p.thumbnail}" alt="">` : ''}
-        <div class="n-body">
-          <p class="n-title">${p.title}</p>
-          <p class="n-date">${p.date}</p>
-        </div>
-      </a>
-    `).join('');
-  } catch (e) {
-    list.innerHTML = '<p class="note-loading">記事を読み込めませんでした。</p>';
-  }
-})();
-/* 作成ツールの最新5件 */
-(async function loadTools() {
-  const list = document.getElementById('tools-list');
-  if (!list) return;
-  try {
-    const res = await fetch('tools.json', { cache: 'no-store' });
-    const data = await res.json();
-    if (!data.posts || data.posts.length === 0) {
-      list.innerHTML = '<p class="note-loading">まだツールがありません。</p>';
-      return;
-    }
-    list.innerHTML = data.posts.slice(0, 5).map(p => `
-      <a class="note-item" href="${p.link}">
-        <div class="n-body">
-          <p class="n-title">${p.title}</p>
-          <p class="n-date">${p.date}${p.desc ? ' ・ ' + p.desc : ''}</p>
-        </div>
-      </a>
-    `).join('');
-  } catch (e) {
-    list.innerHTML = '<p class="note-loading">ツール一覧を読み込めませんでした。</p>';
-  }
-})();
+  })();
+}
+renderList('tools-list', 'tools.json', 5);
+renderList('code-list', 'code.json', 5);
+renderList('note-list', 'note.json', 0);
 </script>
 </body>
 </html>
