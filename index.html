@@ -195,7 +195,19 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
   .post .tags { flex-basis: auto; }
   .section-label { margin-top: 80px; }
 }
-
+.sns-list { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
+.sns-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border: 1px solid var(--line); border-radius: 4px;
+  font-size: 0.85rem; color: var(--ink);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.sns-item:hover {
+  border-color: rgba(200,210,255,0.5);
+  box-shadow: 0 0 16px rgba(120,140,220,0.2);
+  transform: translateY(-2px);
+}
+.sns-item svg { opacity: 0.9; }
 </style>
 </head>
 <body>
