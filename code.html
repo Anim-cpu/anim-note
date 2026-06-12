@@ -70,7 +70,6 @@ header { padding: 56px 0 0; display: flex; justify-content: space-between; align
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .c-btn:hover { border-color: rgba(200,210,255,0.5); box-shadow: 0 0 14px rgba(120,140,220,0.2); transform: translateY(-2px); }
-.c-btn svg { width: 15px; height: 15px; }
 .note-loading { color: var(--muted); font-size: 0.82rem; padding: 20px 0; }
 footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
 @media (max-width: 600px) {
@@ -107,7 +106,6 @@ footer { padding: 80px 0 48px; color: var(--muted); font-size: 0.78rem; }
   </div>
 
   <script>
-/* 星空 */
 const canvas = document.getElementById('stars');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -146,6 +144,34 @@ if (clouds) {
     clouds.style.setProperty('--mx','-500px'); clouds.style.setProperty('--my','-500px');
   });
 }
-/* コード記録の全件を表示 */
-const NOTE_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h13.5c1.5 0 2.5 1 2.5 2.5V20H6.5C5 20 4 19 4 17.5V4zm2.5 2v11.5h11V6.5c0-.3-.2-.5-.5-.5H6.5z"/></svg>';
-const GH_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48
+(async function loadCode() {
+  const list = document.getElementById('code-list');
+  if (!list) return;
+  try {
+    const res = await fetch('code.json', { cache: 'no-store' });
+    const data = await res.json();
+    if (!data.posts || data.posts.length === 0) {
+      list.innerHTML = '<p class="note-loading">まだ記録がありません。note に投稿すると自動で並びます。</p>';
+      return;
+    }
+    list.innerHTML = data.posts.map(p => {
+      var ghBtn = p.github ? '<a class="c-btn" href="' + p.github + '" target="_blank" rel="noopener">GitHub</a>' : '';
+      var img = p.thumbnail ? '<img src="' + p.thumbnail + '" alt="">' : '';
+      return '<div class="code-item">' + img +
+        '<div class="c-body">' +
+          '<p class="c-title">' + p.title + '</p>' +
+          '<p class="c-date">' + p.date + '</p>' +
+          '<div class="c-links">' +
+            '<a class="c-btn" href="' + p.link + '" target="_blank" rel="noopener">note で読む</a>' +
+            ghBtn +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  } catch (e) {
+    list.innerHTML = '<p class="note-loading">読み込めませんでした。</p>';
+  }
+})();
+</script>
+</body>
+</html>
