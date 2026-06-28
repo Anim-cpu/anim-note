@@ -1,6 +1,18 @@
 {
-  "updated": "2026-06-27T08:11:04.491Z",
+  "updated": "2026-06-28T08:35:19.792Z",
   "posts": [
+    {
+      "title": "【時事まとめ】2026年6月28日（日）― 今週の動向",
+      "link": "https://note.com/nekoz_17/n/n6a0165dc4f6c",
+      "date": "2026.06.27",
+      "thumbnail": "https://assets.st-note.com/production/uploads/images/289434313/rectangle_large_type_2_0edb1b452dd2bf5b623cd7bf114e7e62.png?width=800"
+    },
+    {
+      "title": "【時事まとめ】2026年6月27日（土）― 昨日の動向",
+      "link": "https://note.com/nekoz_17/n/nf28ead9ecc9a",
+      "date": "2026.06.27",
+      "thumbnail": "https://assets.st-note.com/production/uploads/images/289346850/rectangle_large_type_2_140919e1d99327df1f9ad32e293e3897.png?width=800"
+    },
     {
       "title": "【特集】広告を動かす面白アルゴリズム ― クリックの裏で回る数学",
       "link": "https://note.com/nekoz_17/n/n36630a811598",
@@ -18,18 +30,6 @@
       "link": "https://note.com/nekoz_17/n/nabb3244b809f",
       "date": "2026.06.25",
       "thumbnail": "https://assets.st-note.com/production/uploads/images/288750566/rectangle_large_type_2_ee4c868820eaf8137c53626e55932490.png?width=800"
-    },
-    {
-      "title": "【特集】ニューラルネットワークの仕組みを、最後まで分解する",
-      "link": "https://note.com/nekoz_17/n/ne3e7461bd0d0",
-      "date": "2026.06.25",
-      "thumbnail": "https://assets.st-note.com/production/uploads/images/288731905/rectangle_large_type_2_e6ed0e5b496f0a378ef5344100c86c8d.png?width=800"
-    },
-    {
-      "title": "【時事まとめ】2026年6月25日（木）― 昨日の動向",
-      "link": "https://note.com/nekoz_17/n/n2388475babe1",
-      "date": "2026.06.25",
-      "thumbnail": "https://assets.st-note.com/production/uploads/images/288718583/rectangle_large_type_2_88929db4402488ede7240eb3adf7c185.png?width=800"
     }
   ]
 }
