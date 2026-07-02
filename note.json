@@ -1,6 +1,12 @@
 {
-  "updated": "2026-07-01T10:55:13.555Z",
+  "updated": "2026-07-02T08:39:02.018Z",
   "posts": [
+    {
+      "title": "【時事まとめ】2026年7月1日（水）― 昨日の動向",
+      "link": "https://note.com/nekoz_17/n/nde8144b89f67",
+      "date": "2026.07.01",
+      "thumbnail": "https://assets.st-note.com/production/uploads/images/290589223/rectangle_large_type_2_63c9c2b91fdc5d7ca390984842aa5986.png?width=800"
+    },
     {
       "title": "【時事まとめ】2026年6月30日（火）― 昨日の動向",
       "link": "https://note.com/nekoz_17/n/nf54020174708",
@@ -24,12 +30,6 @@
       "link": "https://note.com/nekoz_17/n/nf28ead9ecc9a",
       "date": "2026.06.27",
       "thumbnail": "https://assets.st-note.com/production/uploads/images/289346850/rectangle_large_type_2_140919e1d99327df1f9ad32e293e3897.png?width=800"
-    },
-    {
-      "title": "【特集】広告を動かす面白アルゴリズム ― クリックの裏で回る数学",
-      "link": "https://note.com/nekoz_17/n/n36630a811598",
-      "date": "2026.06.26",
-      "thumbnail": "https://assets.st-note.com/production/uploads/images/288975037/rectangle_large_type_2_aa3698e39281b66b471d18e5fd202a83.png?width=800"
     }
   ]
 }
